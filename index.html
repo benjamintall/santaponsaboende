@@ -1,88 +1,176 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lägenhet i Santa Ponsa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 20px;
-            min-height: 70px;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        .description {
-            padding: 20px;
-            text-align: center;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
-            padding: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lägenhet uthyres</title>
+  <style>
+    :root {
+      --main-color: #333;
+      --bg-color: #f9f9f9;
+      --card-bg: white;
+      --radius: 8px;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--main-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h1,
+    h2 {
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .slider {
+      position: relative;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .slider img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      display: none;
+    }
+
+    .slider img.active {
+      display: block;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      background: var(--main-color);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    form {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .slider img {
+        max-height: 300px;
+      }
+
+      form {
+        padding: 1.2rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>Lägenhet i Santa Ponsa</h1>
-        </div>
-    </header>
 
-    <section class="description">
-        <h2>Välkommen till värmen</h2>
-        <p>En modern och ljus lägenhet med öppen planlösning, belägen ett stenkast från hav och strand.</p>
-    </section>
+  <header>
+    <h1>Lägenhet med havsutsikt uthyres i Santa Ponsa</h1>
+    <p>Modern 2:a på 55 kvm – nära tunnelbana, butiker och restauranger.</p>
+  </header>
 
-    <section class="gallery">
-        <img src="balkong.jpeg" alt="Vardagsrum">
-        <img src="balkongmothav.jpeg" alt="Kök">
-        <img src="balkongmotponsa.jpeg" alt="Sovrum">
-        <img src="toalett.jpeg" alt="Badrum">
-        <img src="dörrmotbalkong.jpeg" alt="Vardagsrum">
-        <img src="kök.jpeg" alt="Kök">
-        <img src="sovrum.jpeg" alt="Sovrum">
-        <img src="toalett.jpeg" alt="Badrum">
-    </section>
+  <main>
+    <h2>Galleri</h2>
+    <div class="slider">
+      <img src="bild1.jpg" class="active" alt="Vardagsrum">
+      <img src="bild2.jpg" alt="Kök">
+      <img src="bild3.jpg" alt="Sovrum">
+      <img src="bild4.jpg" alt="Badrum">
+      <div class="buttons">
+        <button onclick="prevImage()">Föregående</button>
+        <button onclick="nextImage()">Nästa</button>
+      </div>
+    </div>
 
-    <footer>
-        <iframe
-          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FStockholm&showPrint=0&src=c2FudGFwb25zYWJvZW5kZUBnbWFpbC5jb20&src=c3Yuc3dlZGlzaCNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039BE5&color=%230B8043"
-          style="border:solid 1px #777" width="500" height="350" frameborder="0" scrolling="no"></iframe>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d315.02821751444094!2d2.476960555702689!3d39.51964446932186!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1741960554286!5m2!1ssv!2sse"
-          width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p>Kontakta oss för bokning! | Email: santaponsaboende@gmail.com</p>
-    </footer>
+    <h2>Kontakta uthyrare</h2>
+    <form action="https://formspree.io/f/mzzeylrb" method="POST">
+      <input type="text" name="name" placeholder="Ditt namn" required>
+      <input type="email" name="email" placeholder="Din e-post" required>
+      <textarea name="message" placeholder="Skriv ett meddelande..." required></textarea>
+      <button type="submit">Skicka</button>
+    </form>
+  </main>
+
+  <script>
+    const images = document.querySelectorAll('.slider img');
+    let current = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+  </script>
+
 </body>
+
 </html>
