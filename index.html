@@ -40,22 +40,52 @@
       margin-bottom: 1rem;
     }
 
-    .slider {
-      position: relative;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+    .slider-frame {
+  width: 100%;
+  height: 400px; /* du kan justera höjden */
+  background-color: #f0f0f0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
 
-    .slider img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      display: none;
-    }
+.slider-frame.active {
+  display: flex;
+}
 
-    .slider img.active {
-      display: block;
-    }
+.slider img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+    .slider-item {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.slider-item.active {
+  display: flex;
+}
+
+.slider-item img {
+  width: 75%;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.slider-text {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
 
     .buttons {
       display: flex;
@@ -117,6 +147,16 @@
       button {
         width: 100%;
       }
+
+  .slider-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slider-item img {
+    width: 100%;
+    max-height: 200px;
+  }
     }
   </style>
 </head>
@@ -131,19 +171,92 @@
   <main>
     <h2>Galleri</h2>
     <div class="slider">
-      <img src="storarum.jpeg" class="active" alt="Vardagsrum">
-      <img src="kok.jpeg" alt="Kök">
-      <img src="sovrum.jpeg" alt="Sovrum">
-      <img src="toalett.jpeg" alt="Badrum">
-      <img src="balkong.jpeg" alt="Balkong">
-      <img src="santaponsabeachwalk.jpeg" alt="Beachwalk">
-      <img src="santaponsastrand.jpeg" alt="Strand">
-      <img src="litenstenstrand.jpeg" alt="Strand">
+      <div class="slider-item active">
+        <img src="storarum.jpeg" alt="Vardagsrum">
+        <div class="slider-text">
+          <h3>Vardagsrum</h3>
+          <p>Ljust och rymligt vardagsrum med stora fönster.</p>
+        </div>
+      </div>
+      
+      <div class="slider-item">
+        <img src="kok.jpeg" alt="Kök">
+        <div class="slider-text">
+          <h3>Kök</h3>
+          <p>Litet kök med köksapparater.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="toalett.jpeg" alt="Badrum">
+        <div class="slider-text">
+          <h3>Badrum</h3>
+          <p>Badrum med tvättmaskin.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="sovrum.jpeg" alt="Sovrum">
+        <div class="slider-text">
+          <h3>Sovrum</h3>
+          <p>Sovrum med dubbelsäng och gardrob.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="franbalkong.jpeg" alt="Balkong">
+        <div class="slider-text">
+          <h3>Utsikt från balkong</h3>
+          <p>Stor balkong med utemöbler.</p>
+        </div>
+      </div>
+      
+      <div class="slider-item">
+        <img src="santaponsabeachwalk.jpeg" alt="Beachwalk">
+        <div class="slider-text">
+          <h3>Strandpromenad</h3>
+          <p>Strandpromenad i Santa Ponsa.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="santaponsastrand.jpeg" alt="Strand">
+        <div class="slider-text">
+          <h3>Stranden</h3>
+          <p>Stor och härlig strand.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="litenstenstrand.jpeg" alt="Liten strand">
+        <div class="slider-text">
+          <h3>Liten strand</h3>
+          <p>Liten avskild strand i närheten.</p>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d315.02821751444094!2d2.476960555702689!3d39.51964446932186!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1741960554286!5m2!1ssv!2sse"
+          width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="slider-text">
+          <h3>Liten strand</h3>
+          <p>Liten avskild strand i närheten.</p>
+        </div>
+      </div>
+
+      <!-- Fortsätt med fler bilder -->
+
+    
       <div class="buttons">
         <button onclick="prevImage()">Föregående</button>
         <button onclick="nextImage()">Nästa</button>
       </div>
     </div>
+
+    
+
 
     <h2>Kontakta oss för förfrågningar</h2>
     <form action="https://formspree.io/f/mzzeylrb" method="POST">
@@ -155,24 +268,26 @@
   </main>
 
   <script>
-    const images = document.querySelectorAll('.slider img');
-    let current = 0;
+    const items = document.querySelectorAll('.slider-item');
+      let current = 0;
 
-    function showImage(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    }
+      function showImage(index) {
+        items.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+        });
+      }
 
-    function nextImage() {
-      current = (current + 1) % images.length;
-      showImage(current);
-    }
+      function nextImage() {
+        current = (current + 1) % items.length;
+        showImage(current);
+      }
 
-    function prevImage() {
-      current = (current - 1 + images.length) % images.length;
-      showImage(current);
-    }
+      function prevImage() {
+        current = (current - 1 + items.length) % items.length;
+        showImage(current);
+      }
+
+
   </script>
 
 </body>
