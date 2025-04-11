@@ -41,50 +41,50 @@
     }
 
     .slider-frame {
-  width: 100%;
-  height: 400px; /* du kan justera höjden */
-  background-color: #f0f0f0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
+      width: 100%;
+      height: 400px; /* du kan justera höjden */
+      background-color: #f0f0f0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
 
-.slider-frame.active {
-  display: flex;
-}
+    .slider-frame.active {
+      display: flex;
+    }
 
-.slider img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: var(--radius);
-}
+    .slider img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
 
     .slider-item {
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
+      display: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-.slider-item.active {
-  display: flex;
-}
+    .slider-item.active {
+      display: flex;
+    }
 
-.slider-item img {
-  width: 75%;
-  max-height: 600px;
-  object-fit: contain;
-  border-radius: 8px;
-}
+    .slider-item img {
+      width: 75%;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-.slider-text {
-  flex: 1;
-  font-size: 0.95rem;
-}
+    .slider-text {
+      flex: 1;
+      font-size: 0.95rem;
+    }
 
 
     .buttons {
@@ -114,6 +114,10 @@
       padding: 2rem;
       border-radius: var(--radius);
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      max-width: 60%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     input,
@@ -129,6 +133,26 @@
     textarea {
       resize: vertical;
       min-height: 100px;
+    }
+
+    .nedrebox {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .nedrebox > div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .nedrebox iframe {
+      width: 100%;
+      height: 350px;
+      border: solid 1px #777;
+      border-radius: 8px;
     }
 
     @media (max-width: 600px) {
@@ -148,16 +172,24 @@
         width: 100%;
       }
 
-  .slider-item {
-    flex-direction: column;
-    text-align: center;
-  }
+      .slider-item {
+        flex-direction: column;
+        text-align: center;
+      }
 
-  .slider-item img {
-    width: 100%;
-    max-height: 200px;
-  }
+      .slider-item img {
+        width: 100%;
+        max-height: 90vh;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .slider-item iframe {
+        width: 100%;
+        height: 300px;
+      }
     }
+
   </style>
 </head>
 
@@ -199,7 +231,7 @@
         <img src="sovrum.jpeg" alt="Sovrum">
         <div class="slider-text">
           <h3>Sovrum</h3>
-          <p>Sovrum med dubbelsäng och gardrob.</p>
+          <p>Sovrum med dubbelsäng och garderob.</p>
         </div>
       </div>
 
@@ -255,16 +287,27 @@
       </div>
     </div>
 
-    
-
-
     <h2>Kontakta oss för förfrågningar</h2>
-    <form action="https://formspree.io/f/mzzeylrb" method="POST">
-      <input type="text" name="name" placeholder="Ditt namn" required>
-      <input type="email" name="email" placeholder="Din e-post" required>
-      <textarea name="message" placeholder="Skriv ett meddelande..." required></textarea>
-      <button type="submit">Skicka</button>
-    </form>
+    <p>Maila till santaponsaboende@gmail.com eller använd formuläret nedan.</p>
+
+  <div class="nedrebox">
+    <div>
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FStockholm&showPrint=0&src=c2FudGFwb25zYWJvZW5kZUBnbWFpbC5jb20&src=c3Yuc3dlZGlzaCNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039BE5&color=%230B8043"
+        frameborder="0" scrolling="no">
+      </iframe>
+    </div>
+  
+    <div>
+      <form action="https://formspree.io/f/mzzeylrb" method="POST">
+        <input type="text" name="name" placeholder="Ditt namn" required>
+        <input type="email" name="email" placeholder="Din e-post" required>
+        <textarea name="message" placeholder="Skriv ett meddelande..." required></textarea>
+        <button type="submit">Skicka</button>
+      </form>
+    </div>
+  </div>
+
   </main>
 
   <script>
