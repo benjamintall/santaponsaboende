@@ -2,337 +2,669 @@
 <html lang="sv">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lägenhet uthyres</title>
-  <style>
-    :root {
-      --main-color: #333;
-      --bg-color: #f9f9f9;
-      --card-bg: white;
-      --radius: 8px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lägenhet uthyres – Santa Ponsa</title>
+<meta name="description" content="Ljus 2:a med havsutsikt och balkong i Santa Ponsa, Mallorca. 40 kvm, nära strand, butiker och restauranger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F3D4D;
+    --ink-soft: #17566A;
+    --teal: #2C7A7B;
+    --sand: #F3E9D2;
+    --sand-light: #FBF6EA;
+    --white: #FFFFFF;
+    --charcoal: #35322C;
+    --gold: #C99A44;
+    --gold-dark: #A87E33;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%230F3D4D' stroke-width='1.4' opacity='0.55'%3E%3Ccircle cx='0' cy='0' r='10'/%3E%3Ccircle cx='40' cy='0' r='10'/%3E%3Ccircle cx='0' cy='40' r='10'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Ccircle cx='20' cy='20' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
     }
+  }
 
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      background-color: var(--bg-color);
-      color: var(--main-color);
-      line-height: 1.6;
-    }
+  body {
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    background-color: var(--sand);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
 
-    header {
-      background: var(--card-bg);
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    }
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.6rem;
+  }
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
+  p { margin: 0 0 1rem; }
 
-    h1,
-    h2 {
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
+  a { color: var(--teal); }
 
-    .slider-frame {
-      width: 100%;
-      height: 400px; /* du kan justera höjden */
-      background-color: #f0f0f0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
+  .tile-strip {
+    height: 22px;
+    background-color: var(--sand);
+    background-image: var(--tile);
+    background-size: 40px 40px;
+  }
 
-    .slider-frame.active {
-      display: flex;
-    }
+  /* ---------- Header ---------- */
+  .site-header {
+    background: var(--sand-light);
+    padding: 1.4rem 1.5rem;
+    text-align: center;
+  }
 
-    .slider img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: var(--radius);
-    }
+  .eyebrow {
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
 
-    .slider-item {
-      display: none;
-      flex-direction: row;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
+  .site-header .logo {
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
 
-    .slider-item.active {
-      display: flex;
-    }
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 82vh;
+    display: flex;
+    align-items: flex-end;
+    background-image:
+      linear-gradient(180deg, rgba(15,61,77,0.15) 0%, rgba(15,61,77,0.35) 55%, rgba(15,61,77,0.88) 100%),
+      url('franbalkong.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 3rem 1.5rem 3.5rem;
+  }
 
-    .slider-item img {
-      width: 75%;
-      max-height: 600px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
 
-    .slider-text {
-      flex: 1;
-      font-size: 0.95rem;
-    }
+  .hero h1 {
+    color: var(--white);
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    margin-bottom: 0.8rem;
+  }
 
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    -webkit-text-stroke: 1.5px var(--ink);
+    text-stroke: 1.5px var(--ink);
+    text-shadow:
+      -1px -1px 0 var(--ink),
+      1px -1px 0 var(--ink),
+      -1px 1px 0 var(--ink),
+      1px 1px 0 var(--ink),
+      0 2px 12px rgba(15,61,77,0.5);
+  }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+  .hero p {
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 1.8rem;
+    color: rgba(255,255,255,0.92);
+  }
 
-    button {
-      background: var(--main-color);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+  .hero-ctas {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-    button:hover {
-      background: #555;
-    }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 1.7rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    font-family: 'Work Sans', sans-serif;
+  }
 
-    form {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: var(--radius);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-      max-width: 60%;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .btn-gold:hover { background: var(--gold-dark); }
 
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
+  .btn-outline {
+    background: transparent;
+    border-color: rgba(255,255,255,0.65);
+    color: var(--white);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
 
-    .nedrebox {
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
+  /* ---------- Sections shared ---------- */
+  main { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .nedrebox > div {
-      flex: 1;
-      min-width: 280px;
-    }
+  section { padding: 4rem 0; }
 
-    .nedrebox iframe {
-      width: 100%;
-      height: 350px;
-      border: solid 1px #777;
-      border-radius: 8px;
-    }
+  .section-head {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 2.6rem;
+  }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
+  .section-head .eyebrow { justify-content: center; display: flex; }
+  .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
 
-      .slider img {
-        max-height: 300px;
-      }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-      form {
-        padding: 1.2rem;
-      }
+  /* ---------- Features ---------- */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
 
-      button {
-        width: 100%;
-      }
+  .feature-card {
+    background: var(--sand-light);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.2rem;
+    text-align: center;
+  }
 
-      .slider-item {
-        flex-direction: column;
-        text-align: center;
-      }
+  .feature-icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 0.9rem;
+    border-radius: 50%;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-      .slider-item img {
-        width: 100%;
-        max-height: 90vh;
-        height: auto;
-        object-fit: contain;
-      }
+  .feature-icon svg { width: 22px; height: 22px; stroke: var(--sand-light); }
 
-      .slider-item iframe {
-        width: 100%;
-        height: 300px;
-      }
-    }
+  .feature-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
 
-  </style>
+  .feature-card p {
+    font-size: 0.88rem;
+    color: #5b5548;
+    margin: 0;
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery-frame {
+    position: relative;
+    background: var(--ink);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .slider-item {
+    display: none;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: stretch;
+    min-height: 460px;
+  }
+  .slider-item.active {
+    display: grid;
+    animation: fadeSlide 0.5s ease;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .slider-item iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border: 0;
+  }
+
+  .slider-text {
+    padding: 2.2rem;
+    color: var(--sand-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slider-text h3 {
+    color: var(--white);
+    font-size: 1.4rem;
+  }
+
+  .slider-text p {
+    color: rgba(251,246,234,0.82);
+    margin: 0;
+  }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    background: var(--sand-light);
+  }
+
+  .slider-nav-btn {
+    background: none;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .slider-nav-btn:hover { background: var(--ink); color: var(--sand-light); }
+  .slider-nav-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  .slider-dots {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(15,61,77,0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .dot.active { background: var(--ink); width: 22px; border-radius: 5px; transition: width 0.2s ease; }
+  .dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  @media (max-width: 720px) {
+    .slider-item { grid-template-columns: 1fr; min-height: 0; }
+    .slider-item img { height: 280px; }
+    .slider-item iframe { height: 280px; min-height: 0; }
+  }
+
+  /* ---------- Location ---------- */
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .location-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+  }
+
+  .location-list li {
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(15,61,77,0.12);
+    font-size: 0.95rem;
+  }
+
+  .location-list li:last-child { border-bottom: none; }
+
+  .location-list svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    stroke: var(--teal);
+    margin-top: 2px;
+  }
+
+  .map-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(15,61,77,0.15);
+  }
+
+  .map-card iframe {
+    width: 100%;
+    height: 360px;
+    border: 0;
+    display: block;
+  }
+
+  /* ---------- Availability ---------- */
+  .availability-section {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    color: var(--sand-light);
+  }
+
+  .availability-section .section-head h2 { color: var(--white); }
+  .availability-section .section-head p { color: rgba(251,246,234,0.8); }
+  .availability-section .eyebrow { color: var(--gold); }
+
+  .calendar-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: rgba(251,246,234,0.06);
+    border: 1px solid rgba(251,246,234,0.15);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+
+  .calendar-card iframe {
+    width: 100%;
+    height: 380px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    display: block;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.85rem;
+    color: #7a7364;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .location-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 500px) {
+    .features { grid-template-columns: 1fr; }
+    section { padding: 2.8rem 0; }
+    .availability-section { padding: 2rem 1.2rem; border-radius: 16px; }
+    .calendar-card iframe { height: 320px; }
+  }
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Lägenhet med havsutsikt i Santa Ponsa</h1>
-    <p>Ljus 2:a på 40 kvm med balkong – nära strand, butiker och restauranger.</p>
+  <div class="tile-strip"></div>
+  <header class="site-header">
+    <div class="eyebrow">Santa Ponsa · Mallorca</div>
+    <div class="logo">Lägenhet med havsutsikt</div>
   </header>
 
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Vakna till <em>havsutsikt</em> i Santa Ponsa</h1>
+      <p>Ljus 2:a på 40 kvm med egen balkong – gångavstånd till strand, butiker och restauranger.</p>
+      <div class="hero-ctas">
+        <a href="#galleri" class="btn btn-gold">Se galleriet</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tile-strip"></div>
+
   <main>
-    <h2>Galleri</h2>
-    <div class="slider">
-      <div class="slider-item active">
-        <img src="storarum.jpeg" alt="Vardagsrum">
-        <div class="slider-text">
-          <h3>Vardagsrum</h3>
-          <p>Ljust och rymligt vardagsrum med stora fönster.</p>
+
+    <section class="features fade-in" id="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
+        </div>
+        <h3>40 kvm</h3>
+        <p>Ljus och genomtänkt planlösning</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M5 10V6h5v4"/></svg>
+        </div>
+        <h3>1 sovrum</h3>
+        <p>Dubbelsäng och garderob</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <h3>Egen balkong</h3>
+        <p>Utemöbler och havsutsikt</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <h3>Nära allt</h3>
+        <p>Strand, butiker, restauranger</p>
+      </div>
+    </section>
+
+    <section id="galleri">
+      <div class="section-head fade-in">
+        <div class="eyebrow">Galleri</div>
+        <h2>Rum för rum, och vägen till stranden</h2>
+      </div>
+
+      <div class="gallery-frame fade-in">
+        <div class="slider">
+
+          <div class="slider-item active">
+            <img src="storarum.jpeg" alt="Vardagsrum">
+            <div class="slider-text">
+              <h3>Vardagsrum</h3>
+              <p>Ljust och rymligt vardagsrum med stora fönster.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="kok.jpeg" alt="Kök">
+            <div class="slider-text">
+              <h3>Kök</h3>
+              <p>Litet kök med köksapparater.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="toalett.jpeg" alt="Badrum">
+            <div class="slider-text">
+              <h3>Badrum</h3>
+              <p>Badrum med tvättmaskin.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="sovrum.jpeg" alt="Sovrum">
+            <div class="slider-text">
+              <h3>Sovrum</h3>
+              <p>Sovrum med dubbelsäng och garderob.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="santaponsabeachwalk.jpeg" alt="Beachwalk">
+            <div class="slider-text">
+              <h3>Strandpromenad</h3>
+              <p>Strandpromenad i Santa Ponsa.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="franbalkong.jpeg" alt="Balkong">
+            <div class="slider-text">
+              <h3>Utsikt från balkong</h3>
+              <p>Stor balkong med utemöbler.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="santaponsastrand.jpeg" alt="Strand">
+            <div class="slider-text">
+              <h3>Stranden</h3>
+              <p>Stor och härlig strand.</p>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img src="litenstenstrand.jpeg" alt="Liten strand">
+            <div class="slider-text">
+              <h3>Liten strand</h3>
+              <p>Liten avskild strand i närheten.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="slider-controls">
+          <button class="slider-nav-btn" onclick="prevImage()" aria-label="Föregående bild">&#8592;</button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-nav-btn" onclick="nextImage()" aria-label="Nästa bild">&#8594;</button>
         </div>
       </div>
-      
-      <div class="slider-item">
-        <img src="kok.jpeg" alt="Kök">
-        <div class="slider-text">
-          <h3>Kök</h3>
-          <p>Litet kök med köksapparater.</p>
+    </section>
+
+    <section id="omradet">
+      <div class="section-head fade-in">
+        <div class="eyebrow">Läget</div>
+        <h2>Mitt i Santa Ponsa</h2>
+      </div>
+
+      <div class="location-grid fade-in">
+        <div>
+          <p>Lägenheten ligger på gångavstånd till både den stora huvudstranden och en liten, mer avskild klippstrand – perfekt oavsett om du vill ha liv och rörelse eller lugn och ro.</p>
+          <ul class="location-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6.2 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6.2-4-10s1.5-7.5 4-10z"/></svg>
+              <span>Strandpromenad längs hela kusten</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 16 0 8 8 0 1 0-16 0z"/><path d="M4 12h16M12 4a11 11 0 0 1 0 16 11 11 0 0 1 0-16z"/></svg>
+              <span>Den stora huvudstranden, bara några minuter bort</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v13h6v-6h6v6h6V7z"/></svg>
+              <span>En liten, avskild klippstrand runt hörnet</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+              <span>Nära butiker och restauranger</span>
+            </li>
+          </ul>
+        </div>
+        <div class="map-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d315.02821751444094!2d2.476960555702689!3d39.51964446932186!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1741960554286!5m2!1ssv!2sse"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karta över boendets läge"></iframe>
         </div>
       </div>
+    </section>
 
-      <div class="slider-item">
-        <img src="toalett.jpeg" alt="Badrum">
-        <div class="slider-text">
-          <h3>Badrum</h3>
-          <p>Badrum med tvättmaskin.</p>
+    <section id="tillganglighet">
+      <div class="availability-section fade-in">
+        <div class="section-head">
+          <div class="eyebrow">Tillgänglighet</div>
+          <h2>Lediga tider</h2>
+          <p>Se aktuell tillgänglighet i kalendern nedan.</p>
+        </div>
+        <div class="calendar-card">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=santaponsaboende%40gmail.com&ctz=Europe%2FStockholm"
+            title="Kalender"></iframe>
         </div>
       </div>
-
-      <div class="slider-item">
-        <img src="sovrum.jpeg" alt="Sovrum">
-        <div class="slider-text">
-          <h3>Sovrum</h3>
-          <p>Sovrum med dubbelsäng och garderob.</p>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <img src="franbalkong.jpeg" alt="Balkong">
-        <div class="slider-text">
-          <h3>Utsikt från balkong</h3>
-          <p>Stor balkong med utemöbler.</p>
-        </div>
-      </div>
-      
-      <div class="slider-item">
-        <img src="santaponsabeachwalk.jpeg" alt="Beachwalk">
-        <div class="slider-text">
-          <h3>Strandpromenad</h3>
-          <p>Strandpromenad i Santa Ponsa.</p>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <img src="santaponsastrand.jpeg" alt="Strand">
-        <div class="slider-text">
-          <h3>Stranden</h3>
-          <p>Stor och härlig strand.</p>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <img src="litenstenstrand.jpeg" alt="Liten strand">
-        <div class="slider-text">
-          <h3>Liten strand</h3>
-          <p>Liten avskild strand i närheten.</p>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d315.02821751444094!2d2.476960555702689!3d39.51964446932186!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1741960554286!5m2!1ssv!2sse"
-          width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div class="slider-text">
-          <h3>Karta</h3>
-          <p>Visar boendets plats.</p>
-        </div>
-      </div>
-
-      <!-- Fortsätt med fler bilder -->
-
-    
-      <div class="buttons">
-        <button onclick="prevImage()">Föregående</button>
-        <button onclick="nextImage()">Nästa</button>
-      </div>
-    </div>
-
-    <h2>Kontakta oss för förfrågningar</h2>
-    <p>Maila till santaponsaboende@gmail.com eller använd formuläret nedan.</p>
-
-  <div class="nedrebox">
-    <div>
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=santaponsaboende%40gmail.com&ctz=Europe%2FStockholm"
-        frameborder="0" scrolling="no">
-      </iframe>
-    </div>
-  
-    <div>
-      <form action="https://formspree.io/f/mzzeylrb" method="POST">
-        <input type="text" name="name" placeholder="Ditt namn" required>
-        <input type="email" name="email" placeholder="Din e-post" required>
-        <textarea name="message" placeholder="Skriv ett meddelande..." required></textarea>
-        <button type="submit">Skicka</button>
-      </form>
-    </div>
-  </div>
+    </section>
 
   </main>
 
+  <div class="tile-strip"></div>
+  <footer>
+    Lägenhet med havsutsikt · Santa Ponsa, Mallorca
+  </footer>
+
   <script>
     const items = document.querySelectorAll('.slider-item');
-      let current = 0;
+    const dotsContainer = document.getElementById('sliderDots');
+    let current = 0;
 
-      function showImage(index) {
-        items.forEach((item, i) => {
-          item.classList.toggle('active', i === index);
-        });
-      }
+    items.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Gå till bild ' + (i + 1));
+      dot.addEventListener('click', () => showImage(i));
+      dotsContainer.appendChild(dot);
+    });
+    const dots = document.querySelectorAll('.dot');
 
-      function nextImage() {
-        current = (current + 1) % items.length;
-        showImage(current);
-      }
+    function showImage(index) {
+      items.forEach((item, i) => item.classList.toggle('active', i === index));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      current = index;
+    }
 
-      function prevImage() {
-        current = (current - 1 + items.length) % items.length;
-        showImage(current);
-      }
+    function nextImage() { showImage((current + 1) % items.length); }
+    function prevImage() { showImage((current - 1 + items.length) % items.length); }
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
 
+    // Gentle fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
 </body>
-
 </html>
